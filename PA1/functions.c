@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -65,7 +66,16 @@ int add(struct DataNode *list, char *data) {
 	prev->next = newNode;
 	return 1;
 }
-void print(struct  DataNode *list);
+void print(struct  DataNode *list) {
+	struct DataNode *cur = list->next;
+
+	while (cur->next) {
+		printf("%s->", cur->data);
+		cur = cur->next;
+	}
+	
+	printf("%s\n", cur->data);
+}
 //int delete(struct DataNode *list, char *data);
 int search(struct DataNode *list, char *data);
 void cleanup(struct DataNode *list);
