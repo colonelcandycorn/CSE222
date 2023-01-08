@@ -31,7 +31,7 @@ struct DataNode *init() {
 
 	*Time Complexity*
 	The search begins at the start of the list and worst case scenario will go until
-	it has traversed the length of list. So worst case is order of n / o(n)
+	it has traversed the length of list. O(n)
 
 */
 int add(struct DataNode *list, char *data) {
@@ -76,6 +76,21 @@ void print(struct  DataNode *list) {
 	
 	printf("%s\n", cur->data);
 }
-//int delete(struct DataNode *list, char *data);
+
+int myDelete(struct DataNode *list, char *data) {
+	struct DataNode *prev = list;
+	struct DataNode *cur = list->next; 
+	while (cur) {
+		if (!strcmp(data, cur->data)) {
+			prev->next = cur->next;
+			free(cur);
+			return 1;
+		}
+		prev = cur;
+		cur = cur->next;
+	}
+	return 0;
+}
+		
 int search(struct DataNode *list, char *data);
 void cleanup(struct DataNode *list);

@@ -66,6 +66,41 @@ TEST(DataNode, print) {
 	print(sent);
 }
 
+TEST(DataNode, delete1) {
+	string s("Poop");
+	char *a = &(s[0]);
+	string t("Open");
+	char *b= &(t[0]);
+	string u("Queen");
+	char *c = &(u[0]);
+	string v("Baby");
+	char *d = &(v[0]);
+
+	// act
+	struct DataNode *sent = init();
+	add(sent, a);
+	add(sent, b);
+	add(sent, c);
+	add(sent, d);
+	struct DataNode *del = init();
+	add(del, a);
+	add(del, b);
+	add(del, c);
+	add(del, d);
+
+	myDelete(del, c);
+	print(del);
+	print(sent);
+
+	for (int i = 0; i < 3; ++i) {
+		sent = sent->next;
+		del = del->next;
+	}
+
+	ASSERT_FALSE(del->next);
+	ASSERT_TRUE(sent->next);
+}
+
 int main(int argc, char *argv[]) {
 	testing::InitGoogleTest(&argc, argv);
 
