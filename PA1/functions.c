@@ -92,5 +92,27 @@ int myDelete(struct DataNode *list, char *data) {
 	return 0;
 }
 		
-int search(struct DataNode *list, char *data);
-void cleanup(struct DataNode *list);
+int search(struct DataNode *list, char *data) {
+	struct DataNode *prev = list;
+	struct DataNode *cur = list->next; 
+	while (cur) {
+		if (!strcmp(data, cur->data)) {
+			return 1;
+		}
+		prev = cur;
+		cur = cur->next;
+	}
+	return 0;
+}
+
+void cleanup(struct DataNode *list) {
+	struct DataNode *prev = list;
+	struct DataNode *cur = list->next;
+	while (cur) {
+		free(prev);
+		prev = cur;
+		cur = cur->next;
+	}
+	free(prev);
+	return;
+}
