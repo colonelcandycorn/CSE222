@@ -6,7 +6,7 @@ using namespace std;
 
 TEST(DataNode, sentinal) {
 	//arrange
-	string s("SENTINAL");
+	string s("SENTINEL");
 
 	//act
 	struct DataNode *newNode = init();
