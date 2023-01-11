@@ -13,6 +13,7 @@ TEST(DataNode, sentinal) {
 	string a(newNode->data);
 	//assert
 	ASSERT_EQ(s,a);
+	cleanup(newNode);
 }
 
 TEST(DataNode, add1) {
@@ -26,6 +27,7 @@ TEST(DataNode, add1) {
 	string b(sent->next->data);
 
 	ASSERT_EQ(s, b);
+	cleanup(sent);
 }
 
 TEST(DataNode, add2) {
@@ -44,6 +46,7 @@ TEST(DataNode, add2) {
 	//assert
 	ASSERT_EQ(t, first);
 	ASSERT_EQ(s, second);
+	cleanup(sent);
 }
 
 TEST(DataNode, print) {
@@ -64,6 +67,7 @@ TEST(DataNode, print) {
 	add(sent, d);
 
 	print(sent);
+	cleanup(sent);
 }
 
 TEST(DataNode, delete1) {
@@ -99,6 +103,8 @@ TEST(DataNode, delete1) {
 
 	ASSERT_FALSE(del->next);
 	ASSERT_TRUE(sent->next);
+	cleanup(sent);
+	cleanup(del);
 }
 
 int main(int argc, char *argv[]) {

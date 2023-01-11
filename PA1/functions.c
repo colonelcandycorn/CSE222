@@ -18,7 +18,7 @@ struct DataNode *init() {
 //    }
 
     char sent[16] = "SENTINAL";
-    memcpy(ret->data, sent, sizeof(sent));
+    strcpy(ret->data, sent);
 
     ret->next = NULL;
 
@@ -42,7 +42,7 @@ int add(struct DataNode *list, char *data) {
 	if (!newNode) return 0;
 	
 	//initialize DataNode data
-	memcpy(newNode->data, data, sizeof(data));
+	strcpy(newNode->data, data);
 	newNode->next = NULL;
 
 	int cmp;
@@ -70,7 +70,7 @@ void print(struct  DataNode *list) {
 	struct DataNode *cur = list->next;
 
 	while (cur->next) {
-		printf("%s->", cur->data);
+		printf("%s ", cur->data);
 		cur = cur->next;
 	}
 	
