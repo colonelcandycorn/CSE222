@@ -1,4 +1,4 @@
-build: main.o functions.o
+main: main.o functions.o
 	g++ -o main main.o functions.o
 test: functions.o test.o
 	g++ -o test test.o functions.o -l gtest -l gtest_main

@@ -95,6 +95,10 @@ int add(struct DataNode *list, char *data) {
 */
 void print(struct  DataNode *list) {
 	struct DataNode *cur = list->next;
+	if(!cur) {
+		puts("");
+		return;
+	}
 
 	while (cur->next) {
 		printf("%s ", cur->data);
