@@ -17,10 +17,11 @@
 
 
 #include "main.h" // function declarations
-#include <string>
+#include <stdio.h>
 #define MAX_STR 100 //used to store command line input
 
-using namespace std;
+typedef struct DataNode DataNode;
+
 int main(void) {
 
 	//initialize variables
@@ -28,7 +29,7 @@ int main(void) {
 	char input[MAX_STR];
 	char choice;
 	char data[20];
-	bool isRunning=1;
+	int isRunning=1;
 	int error;
 
 	//DataNode is a struct consisting on a char array and a pointer to a datanode
@@ -83,7 +84,7 @@ int main(void) {
 			// user wants to delete something from the list
 			// the delete function will return with 0 if the item isn't in the list
 			case 'd':
-				if ((error = myDelete(list, data))) {
+				if ((error = delete(list, data))) {
 					puts("SUCCESS");
 				} else {
 					puts("NODE NOT FOUND");

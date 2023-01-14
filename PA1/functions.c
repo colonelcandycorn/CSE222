@@ -122,7 +122,7 @@ void print(struct  DataNode *list) {
 	Worst case we search the list and don't find the data we want to delete so O(n)
 */
 
-int myDelete(struct DataNode *list, char *data) {
+int delete(struct DataNode *list, char *data) {
 	struct DataNode *prev = list;
 	struct DataNode *cur = list->next; 
 	while (cur) {
