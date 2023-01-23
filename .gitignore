@@ -1,6 +1,8 @@
 #ignore object files
 PA1/*.o
+PA2/*.o
 
 #ignore compiled files
 PA1/test
 PA1/main
+PA2/main
