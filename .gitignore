@@ -5,7 +5,10 @@ PA2/*.o
 #ignore compiled files
 PA1/test
 PA1/main
-PA2/main
+PA2/plate
+
+#ignore txt
+PA2/*.txt
 
 #ignore tar files
 PA1/pa1.tar

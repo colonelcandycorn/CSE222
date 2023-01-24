@@ -15,10 +15,10 @@ void listAdd(struct node *sent,
 			 char *plate,
 			 char *firstname,
 			 char *lastname);
-void listFind(struct node *sent,
-			  char *plate,
-			  char *firstname,
-			  char *lastname);
+int listFind(struct node *sent,
+			 char *plate,
+			 char *firstname,
+			 char *lastname);
 int listLen(struct node *sent);
 void listPrint(struct node *sent);
 void listFree(struct node *sent);

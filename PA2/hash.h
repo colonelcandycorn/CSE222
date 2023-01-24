@@ -6,6 +6,7 @@
 typedef struct node *hashEntry;
 
 hashEntry *hashInit(int hashsize);
+int hash(char *plate);
 void hashAdd(hashEntry *hashTable,
 			 char *plate,
 			 char *first,
@@ -14,7 +15,8 @@ int hashFind(hashEntry *hashTable,
 			 char *plate,
 			 char *first,
 			 char *last);
-void hashDist(hashEntry *hashTable, int cellNum);
+void hashDist(hashEntry *hashTable);
+void hashDump(hashEntry *hashTable, int cellNum);
 void hashFree(hashEntry *hashTAble);
 
 
