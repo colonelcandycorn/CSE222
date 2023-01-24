@@ -6,3 +6,6 @@ PA2/*.o
 PA1/test
 PA1/main
 PA2/main
+
+#ignore tar files
+PA1/pa1.tar
