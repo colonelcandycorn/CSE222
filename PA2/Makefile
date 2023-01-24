@@ -1,4 +1,4 @@
-main: hash.o list.o main.o
+plate: hash.o list.o main.o
 	gcc -o plate hash.o list.o main.o
 hash.o: hash.c
 	gcc -c hash.c
