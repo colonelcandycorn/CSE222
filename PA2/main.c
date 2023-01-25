@@ -1,46 +1,70 @@
 #include "hash.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_STR 257
+extern int size;
 
 int main(int argc, char **argv) {
-	struct node *test = listInit();
-	listAdd(test, "123", "Sarah", "Dylan");
-	listPrint(test);
-	int num = hash(test->next->plate);
-	printf("%d\n", num); 	
-	listFree(test);
+	char *dbName;
+	hashEntry* myHash;
+	int hashSize = 50;
+	if (argc == 2 ) {
+		myHash = hashInit(50);
+	} else if (argc == 3 && atoi(argv[1]) >= 1) {
+		myHash = hashInit(atoi(argv[1]));
+	} else {
+		puts("ERROR WITH ARGUMENTS");
+		return 1;
+	}
 
+	dbName = argv[argc - 1];
 
-	hashEntry *myHash = hashInit(50);
-	hashAdd(myHash, "123", "Sarah", "Dylan");
-	hashDist(myHash);
-	hashDump(myHash, hash("123")%50);
-	hashFree(myHash);
-
-	myHash = hashInit(750);
-	FILE *file = fopen("database.txt", "r");
-	char input[257];
-	char plate[257];
-	char first[257];
-	char last[257];
-	int error = 0;
-	if (!file) puts("ERROR");
-	else {
-		while (fgets(input, 257, file)) {
-			if (error = sscanf(input, "%s%s%s", plate, first, last) != 3) {
-				puts("ERROR inputting");
-				printf("Number scanned = %d\n", error);
-				printf("%s\n", input);
+	FILE *file = fopen(dbName, "r");
+	char input[MAX_STR];
+	char plate[MAX_STR];
+	char first[MAX_STR];
+	char last[MAX_STR];
+	int scanNum = 0;
+	int cellNum = 0;
+	if (!file) {
+		puts("ERROR READING FILE");
+		return 1;
+	} else {
+		while (fgets(input, MAX_STR, file)) {
+			if (scanNum = sscanf(input, "%s%s%s", plate, first, last) != 3) {
+				puts("ERROR INPUTTING");
+				return 1;
 			}
 			hashAdd(myHash, plate, first, last);
 		}
 	}
 	fclose(file);
 
-	for (int i = 0; i < 750; ++i) {
-		listPrint(myHash[i]);
+	
+	char userInput[MAX_STR];
+	int isRunning = 1;
+	while (isRunning) {
+		printf("Plate: ");
+		if (!fgets(input, MAX_STR, stdin)) isRunning = 0; //check for EOF
+		scanNum = sscanf(input, "%s%d", userInput, &cellNum); //check for two args
+		if (!strcmp(userInput, "*DUMP")) {
+			if (scanNum == 2) hashDump(myHash, cellNum);
+			else {
+				for (int i = 0; i < size; ++i) {
+					hashDump(myHash, i);
+				}
+			}
+		} else if (!strcmp(userInput, "*DIST")) {
+			hashDist(myHash);
+		} else {
+			if (!hashFind(myHash, userInput, first, last)) continue;
+			printf("First name: %s\n", first);
+			printf("Last name: %s\n", last);
+		}
 	}
-
-	hashDist(myHash);
+	
 	hashFree(myHash);
 	return 0; 
 }

@@ -35,7 +35,7 @@ int hashFind(hashEntry *hashTable, char *plate, char *first, char *last) {
 
 void hashDist(hashEntry *hashTable) {
 	for (int i = 0; i < size; ++i) {
-		printf("Entry %d: length=%d\n", i, listLen(hashTable[i]));
+		printf("Entry %2d: length=%3d\n", i, listLen(hashTable[i]));
 	}
 }
 
