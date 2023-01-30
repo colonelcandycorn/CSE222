@@ -33,8 +33,8 @@ int listFind(struct node *sent, char *plate, char *firstname, char *lastname) {
 	while (cur) {
 		++temp;
 		if (!strcmp(cur->plate, plate)) {
-			firstname = cur->first;
-			lastname = cur->last;
+			strcpy(firstname, cur->first);
+			strcpy(lastname, cur->last);
 			return 1;
 		}
 		cur = cur->next;

@@ -40,6 +40,8 @@ void hashDist(hashEntry *hashTable) {
 }
 
 void hashDump(hashEntry *hashTable, int cellNum) {
+	if (cellNum >= size || cellNum < 0) return;
+
 	listPrint(hashTable[cellNum]);
 }
 
