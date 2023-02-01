@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
 			}
 
 		// call the has dist function
-		} else if (!strcmp(userInput, "*DIST")) {
+		} else if (!strcmp(userInput, "*DIST") && scanNum == 1) {
 			hashDist(myHash);
 
 		// either they entered an incorrect command or they meant to look up a plate
