@@ -12,3 +12,7 @@ PA2/*.txt
 
 #ignore tar files
 PA1/pa1.tar
+PA2/PA2.tar
+
+#try ignoring gitignore?
+.gitignore
