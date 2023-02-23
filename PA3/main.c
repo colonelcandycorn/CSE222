@@ -53,10 +53,35 @@ int main(int argc, char **argv) {
 
 		if (scanNum == 1 && !strcmp(userInput, "*DUMP")) {
 			//do stuff
+			printf("TREE HEIGHT: %d\n", height(myTree));
+			printf("BALANCED: %s\n\n", balanced(myTree) ? "YES" : "NO");
+			puts("LNR TRAVERSAL");
+			LNR(myTree);
+			puts("");
+			puts("NLR TRAVERSAL");
+			NLR(myTree);
+			puts("");
+			puts("LRN TRAVERSAL");
+			LRN(myTree);
+			puts("");
 		} else if (scanNum == 2 && !strcmp(userInput, "*DELETE")) {
 			//delete stuff
+			if (!search(myTree, userPlate, first, last)) {
+				 printf("user plate is %s\n", userPlate);
+				 puts("PLATE NOT FOUND");
+				 continue;
+			}
+
+			myTree = delete(myTree, userPlate);
+			puts("SUCCESS");
 		} else {
 			// search stuff
+			if (!search(myTree, userInput, first, last)) {
+				puts("PLATE NOT FOUND");
+				continue;
+			}
+			printf("First name: %s\n", first);
+			printf("Last name: %s\n", last);
 		}
 	}
 

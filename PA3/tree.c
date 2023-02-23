@@ -84,10 +84,10 @@ int search(Node root, char *plate, char *first, char *last) {
 
 	int cmp = strcmp(root->plate, plate);
 	if (!cmp) {
-		strcpy(root->first, first);
-		strcpy(root->last, last);
+		strcpy(first, root->first);
+		strcpy(last, root->last);
 		return 1;
-	} else if (cmp < 0) {
+	} else if (cmp > 0) {
 		return search(root->left, plate, first, last);
 	} else {
 		return search(root->right, plate, first, last);
