@@ -27,9 +27,9 @@ Node add(Node root, char *plate, char *first, char* last) {
 	if (!root) {
 	// initialize space for new node and it's internals
 	Node toBeAdded = (Node)malloc(sizeof(struct node));
-	toBeAdded->plate = (char *)malloc(sizeof(plate));
-	toBeAdded->first = (char *)malloc(sizeof(first));
-	toBeAdded->last = (char*)malloc(sizeof(last));
+	toBeAdded->plate = (char *)malloc(sizeof(char) * (strlen(plate) + 1));
+	toBeAdded->first = (char *)malloc(sizeof(char) * (strlen(first) + 1));
+	toBeAdded->last = (char*)malloc(sizeof(char) * (strlen(last) + 1));
 	toBeAdded->left =  NULL;
 	toBeAdded->right = NULL;
 
