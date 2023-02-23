@@ -29,5 +29,5 @@ void LRN(Node root);
 
 void treeFree(Node root);
 void freeNode(Node);
-Node inorderSuccessor(Node);
+Node inorderPredecessor(Node);
 #endif // PA3_TREE_H
