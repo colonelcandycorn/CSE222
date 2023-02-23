@@ -165,4 +165,36 @@ void LRN(Node root) {
 	LRN(root->right);
 	printf("Plate: <%s>  Name: %s, %s\n", root->plate, root->last, root->first);
 }
+
+
+void treeFree(Node root) {
+	if (!root) return;
 	
+	treeFree(root->left);
+	treeFree(root->right);
+	freeNode(root);
+}
+
+int height(Node root) {
+	int left, right;
+
+	if (!root) return -1;
+	if (!root->left && !root->right) return 0;
+
+	left = 1 + height(root->left);
+	right = 1 + height(root->right);
+
+	return  left > right ? left : right;
+}
+
+int balanced(Node root) {
+	if (!root) return 1;
+
+	int left, right;
+	left = balanced(root->left);
+	right = balanced(root->right);
+
+	if (!left || !right) return 0;
+
+	return abs(height(root->left) - height(root->right)) <= 1;
+}	

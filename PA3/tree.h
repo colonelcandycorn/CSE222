@@ -12,6 +12,7 @@ struct node {
 typedef struct node *Node;
 
 int height(Node root);
+int balanced(Node root);
 Node add(Node root,
 		 char *plate,
 		 char *first,
