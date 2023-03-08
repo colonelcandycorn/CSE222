@@ -60,7 +60,7 @@ struct knapSack *max(int w, int *wt, int*val, int size, struct knapSack** dKnaps
     struct knapSack * tempKnaps[size];
     struct knapSack * newKnap;
     int bestValue = 0;
-    int bestIndex;
+    int bestIndex = 0;
 
 	// compare the results of our recursive calls
 	// this is based on the amount of items in our datafile
@@ -68,7 +68,10 @@ struct knapSack *max(int w, int *wt, int*val, int size, struct knapSack** dKnaps
 	// this prevents us from calling max with a negative carrying capacity
     for (int i = 0; i < size; ++i) {
         int newWeight = w - wt[i];
-        if (newWeight < 0) continue;
+        if (newWeight < 0) {
+			tempKnaps[i] = max(0, wt, val, size, dKnaps);
+			continue;
+		}
 
         tempKnaps[i] = max(newWeight, wt, val, size, dKnaps);
 
@@ -77,6 +80,7 @@ struct knapSack *max(int w, int *wt, int*val, int size, struct knapSack** dKnaps
             bestIndex = i;
         }
     }
+
 
 	// we know the best combination now so we create a new struct knapsack to store it
 	// we place it in dKnaps after incrementing the items list and the total value
@@ -92,6 +96,7 @@ struct knapSack *max(int w, int *wt, int*val, int size, struct knapSack** dKnaps
         }
     }
 
+
     dKnaps[w] = newKnap;
 
     return newKnap;
@@ -100,6 +105,7 @@ struct knapSack *max(int w, int *wt, int*val, int size, struct knapSack** dKnaps
 // simple utility for freeing memory once we are done
 
 void freeKnap(struct knapSack *deleteKnap) {
+	if (!deleteKnap) return;
 	free(deleteKnap->items);
 	free(deleteKnap);
 }
